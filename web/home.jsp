@@ -15,25 +15,7 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <header>
-        <input type="checkbox" name="" id="toggler">
-        <label for="toggler" class="fas fa-bars"></label>
-        <a href="#" class="logo">flower<span>.</span></a>
-
-        <nav class="navbar">
-            <a href="#home">home</a>
-            <a href="#about">about</a>
-            <a href="#products">products</a>
-            <a href="#review">review</a>
-            <a href="#contact">contact</a>
-        </nav>
-
-        <div class="icons">
-            <a href="wishlist.html" class="fas fa-heart" ></a>
-            <a href="cart.html" class="fas fa-shopping-cart"></a>
-            <a href="#" class="fas fa-user"></a>
-        </div>
-    </header>
+    <%@ include file="navbar.jsp" %>
 
     <!-- home section starts -->
     <section class="home" id="home">
@@ -108,154 +90,88 @@
         </div>
     </section>
     <!-- icons section ends -->
+    <--<!-- product -->
 
-    <!-- product section starts -->
-    <section class="products" id="products">
-    <h1 class="heading">latest <span>products</span></h1>
-     <div class="box-container">
-       <div class="box">
-        <span class="discount">-10%</span>
-          <div class="image">
-            <img src="images/img8.jpg" alt="">
-            <div class="icons">
-                <a href="#" class="fas fa-heart" onclick="addToWishlist('flower pot', 580, 'images/img8.jpg')"></a>
-                <a href="#" class="cart-btn">add to cart</a>
-                <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-          <div class="content">
-            <h3>flower pot</h3>
-            <div class="price"> ₹580 <span>₹690</span></div>
-          </div>
-       </div>
-      <div class="box">
-        <span class="discount">-15%</span>
-          <div class="image">
-            <img src="images/img4.jpg" alt="">
-            <div class="icons">
-                <a href="#" class="fas fa-heart" onclick="addToWishlist('yellow red rose', 680, 'images/img4.jpg')"></a>
-                <a href="#" class="cart-btn">add to cart</a>
-                <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-          <div class="content">
-            <h3>yellow red rose</h3>
-            <div class="price"> ₹680 <span>₹790</span></div>
-          </div>
-       </div>
-       <div class="box">
-        <span class="discount">-40 %</span>
-          <div class="image">
-            <img src="images/img7.jpg" alt="">
-            <div class="icons">
-                <a href="#" class="fas fa-heart" onclick="addToWishlist('Blue Rose', 400, 'images/img7.jpg')"></a>
-                <a href="#" class="cart-btn">add to cart</a>
-                <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-          <div class="content">
-            <h3>blue rose</h3>
-            <div class="price"> ₹400 <span>₹897</span></div>
-          </div>
-       </div>
-       <div class="box">
-        <span class="discount">-29%</span>
-          <div class="image">
-            <img src="images/img5.jpg" alt="">
-            <div class="icons">
-                <a href="#" class="fas fa-heart" onclick="addToWishlist('petels pink rose', 360, 'images/img5.jpg')"></a>
-                <a href="#" class="cart-btn">add to cart</a>
-                <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-          <div class="content">
-            <h3>petels pink rose</h3>
-            <div class="price"> ₹360 <span>₹580</span></div>
-          </div>
-       </div>
+<%@page import="java.sql.*"%>
 
-       <div class="box">
-        <span class="discount">-29%</span>
-          <div class="image">
-            <img src="images/img3.jpg" alt="">
-            <div class="icons">
-                <a href="#" class="fas fa-heart" onclick="addToWishlist('jasmine water rose', 580, 'images/img3.jpg')"></a>
-                <a href="#" class="cart-btn">add to cart</a>
-                <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-          <div class="content">
-            <h3>jasmine water rose</h3>
-            <div class="price"> ₹580 <span>₹880</span></div>
-          </div>
-       </div>
+<section class="products" id="products">
+<h1 class="heading">latest <span>products</span></h1>
 
-       <div class="box">
-        <span class="discount">-29%</span>
-          <div class="image">
-            <img src="images/img9.jpg" alt="">
-            <div class="icons">
-                <a href="#" class="fas fa-heart" onclick="addToWishlist('Blue petels Rose', 380, 'images/img9.jpg')"></a>
-                <a href="#" class="cart-btn">add to cart</a>
-                <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-          <div class="content">
-            <h3>blue petels rose</h3>
-            <div class="price"> ₹380 <span>₹600</span></div>
-          </div>
-       </div>
-        <div class="box">
-        <span class="discount">-29%</span>
-          <div class="image">
-            <img src="images/img6 (1).jpg" alt="">
-            <div class="icons">
-                <a href="#" class="fas fa-heart" onclick="addToWishlist('purple mixed rose', 480, 'images/img6 (1).jpg')"></a>
-                <a href="#" class="cart-btn">add to cart</a>
-                <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-          <div class="content">
-            <h3>purple mixed rose</h3>
-            <div class="price"> ₹480 <span>₹500</span></div>
-          </div>
-       </div>
-         <div class="box">
-        <span class="discount">-29%</span>
-          <div class="image">
-            <img src="images/img9.jpg" alt="">
-            <div class="icons">
-                <a href="#" class="fas fa-heart" onclick="addToWishlist('Blue Rose', 580, 'images/img9.jpg')"></a>
-                <a href="#" class="cart-btn">add to cart</a>
-                <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-          <div class="content">
-            <h3>blue rose</h3>
-            <div class="price"> ₹580 <span>₹880</span></div>
-          </div>
-       </div>
-       
-       
-        <div class="box">
-        <span class="discount">-29%</span>
-          <div class="image">
-            <img src="images/img4.jpg" alt="">
-            <div class="icons">
-                <a href="#" class="fas fa-heart" onclick="addToWishlist('Blue Rose',580, 'images/img4.jpg')"></a>
-                <a href="#" class="cart-btn">add to cart</a>
-                <a href="#" class="fas fa-share"></a>
-            </div>
-          </div>
-          <div class="content">
-            <h3>blue rose</h3>
-            <div class="price"> ₹580 <span>₹789</span></div>
-          </div>
-       </div>
+<div class="box-container">
 
-     </div>
+<%
+Class.forName("com.mysql.cj.jdbc.Driver");
+Connection conn = DriverManager.getConnection(
+    "jdbc:mysql://localhost:3306/flowerproducts",
+    "root","Vicky345@"
+);
 
+PreparedStatement ps =
+    conn.prepareStatement("SELECT * FROM productlist");
+ResultSet rs = ps.executeQuery();
+
+while(rs.next()){
+    int stock = rs.getInt("stock");
+    int price = rs.getInt("price");
+    int oldPrice = rs.getInt("old_price");
+%>
+
+<div class="box">
+
+    <% if(oldPrice > price){ %>
+        <span class="discount">
+            <%= ((oldPrice - price) * 100) / oldPrice %>% OFF
+        </span>
+    <% } %>
+
+    <div class="image">
+        <img src="<%=request.getContextPath()%>/images/<%=rs.getString("image")%>" alt="">
+
+        <div class="icons">
+
+            <a href="#" class="fas fa-heart"
+               onclick="addToWishlist(
+               '<%=rs.getString("name")%>',
+               <%=price%>,
+               'images/<%=rs.getString("image")%>')">
+            </a>
+
+            <% if(stock > 0){ %>
+            <a href="addtocart.jsp?pid=<%=rs.getInt("product_id")%>&name=<%=rs.getString("name")%>&price=<%=rs.getInt("price")%>&image=<%=rs.getString("image")%>"
+   class="cart-btn">
+   Add to Cart
+</a>
+
+
+            <% } else { %>
+                <span style="color:red;font-weight:bold;">Out of stock</span>
+            <% } %>
+
+            <a href="#" class="fas fa-share"></a>
+        </div>
+    </div>
+
+    <div class="content">
+        <h3><%=rs.getString("name")%></h3>
+        <div class="price">
+            ₹<%=price%>
+            <% if(oldPrice > price){ %>
+                <span>₹<%=oldPrice%></span>
+            <% } %>
+        </div>
+    </div>
+
+</div>
+
+<%
+}
+conn.close();
+%>
+
+</div>
 </section>
+
+
 <!-- product section ends -->
 
 

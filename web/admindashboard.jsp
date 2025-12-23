@@ -38,7 +38,7 @@
 
     <a href="addproduct.jsp">➕ Add Product</a>
     <a href="viewproducts.jsp">📋 View Products</a>
-    <a href="vieworders.jsp">📦 View Orders</a>
+    <a href="adminorders.jsp">📦 View Orders</a>
     <a href="logout.jsp" class="logout">🚪 Logout</a>
 </div>
 

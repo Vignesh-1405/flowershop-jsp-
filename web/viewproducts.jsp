@@ -20,6 +20,18 @@ if(session.getAttribute("admin")==null){
 %>
 
 <h2>Products</h2>
+<a href="admindashboard.jsp" style="text-decoration:none;">
+    <button style="
+        padding:8px 15px;
+        background-color:#4CAF50;
+        color:white;
+        border:none;
+        border-radius:5px;
+        cursor:pointer;">
+        ⬅ Back to Dashboard
+    </button>
+</a>
+
 
 <table border="1" cellpadding="10">
 <tr>
