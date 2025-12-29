@@ -21,7 +21,7 @@
         <label for="password">Password</label>
         <input type="text" id="password" name="password" required>
         <button type="submit">Login</button>
-        <a href="#">forget password ?</a>
+        <a href="forgotpassword.jsp">forget password ?</a>
         <a href="index.jsp">New user / Create a account</a>
         </form>
     </body>

@@ -23,35 +23,62 @@ Connection conn = DriverManager.getConnection(
 );
 
 // 1️⃣ Calculate total
-PreparedStatement ps = conn.prepareStatement(
+PreparedStatement totalPs = conn.prepareStatement(
  "SELECT SUM(price * quantity) FROM cart WHERE user_email=?");
-ps.setString(1, email);
-ResultSet rs = ps.executeQuery();
+totalPs.setString(1, email);
+ResultSet totalRs = totalPs.executeQuery();
 
 int total = 0;
-if(rs.next()){
-    total = rs.getInt(1);
+if(totalRs.next()){
+    total = totalRs.getInt(1);
 }
 
-// 2️⃣ Insert order
-PreparedStatement insert = conn.prepareStatement(
- "INSERT INTO orders(user_email,total_amount,address,payment) VALUES(?,?,?,?)");
-insert.setString(1, email);
-insert.setInt(2, total);
-insert.setString(3, address);
-insert.setString(4, payment);
-insert.executeUpdate();
+// 2️⃣ Insert order (GET GENERATED ORDER ID)
+PreparedStatement orderPs = conn.prepareStatement(
+ "INSERT INTO orders(user_email,total_amount,address,payment) VALUES(?,?,?,?)",
+ Statement.RETURN_GENERATED_KEYS
+);
+orderPs.setString(1, email);
+orderPs.setInt(2, total);
+orderPs.setString(3, address);
+orderPs.setString(4, payment);
+orderPs.executeUpdate();
 
-// 3️⃣ Clear cart
-PreparedStatement clear = conn.prepareStatement(
+ResultSet orderKeys = orderPs.getGeneratedKeys();
+int orderId = 0;
+if(orderKeys.next()){
+    orderId = orderKeys.getInt(1);
+}
+
+// 3️⃣ INSERT CART ITEMS INTO order_items
+PreparedStatement cartPs = conn.prepareStatement(
+ "SELECT * FROM cart WHERE user_email=?");
+cartPs.setString(1, email);
+ResultSet cartRs = cartPs.executeQuery();
+
+PreparedStatement itemPs = conn.prepareStatement(
+ "INSERT INTO order_items(order_id,product_id,product_name,price,quantity) VALUES(?,?,?,?,?)");
+
+while(cartRs.next()){
+    itemPs.setInt(1, orderId);
+    itemPs.setInt(2, cartRs.getInt("product_id"));
+    itemPs.setString(3, cartRs.getString("product_name"));
+    itemPs.setInt(4, cartRs.getInt("price"));
+    itemPs.setInt(5, cartRs.getInt("quantity"));
+    itemPs.executeUpdate();
+}
+
+// 4️⃣ Clear cart
+PreparedStatement clearPs = conn.prepareStatement(
  "DELETE FROM cart WHERE user_email=?");
-clear.setString(1, email);
-clear.executeUpdate();
+clearPs.setString(1, email);
+clearPs.executeUpdate();
 
 conn.close();
 
-// 4️⃣ Redirect to success page
+// 5️⃣ Redirect
 response.sendRedirect("ordersuccess.jsp");
 %>
+
 
 

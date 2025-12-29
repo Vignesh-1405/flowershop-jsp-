@@ -1,177 +1,110 @@
-/*
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
-*/
-/* 
-    Created on : 22-Dec-2025, 10:27:33 am
-    Author     : VIGNESH S
-*/
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600&family=Poppins:wght@300;400;500&display=swap');
 
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
-
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: 'Poppins', sans-serif;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-body {
-  height: 100vh;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: linear-gradient(to right, #ff9a9e, #fad0c4);
-  overflow: hidden;
-  position: relative;
+body{
+  min-height:100vh;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  background: linear-gradient(135deg,#fbc2eb,#a6c1ee);
+  font-family:'Poppins',sans-serif;
 }
 
-/* Floating flower-like circles for effect */
-body::before,
-body::after {
-  content: '';
-  position: absolute;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.1);
-  animation: float 6s ease-in-out infinite alternate;
-}
-body::before {
-  height: 250px;
-  width: 250px;
-  top: 10%;
-  left: 15%;
-}
-body::after {
-  height: 200px;
-  width: 200px;
-  bottom: 10%;
-  right: 10%;
+/* Form */
+form{
+  width:460px;
+  padding:40px;
+  border-radius:25px;
+  background: rgba(255,255,255,0.15);
+  backdrop-filter: blur(14px);
+  box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+  animation: fadeIn 1s ease;
+  position:relative;
 }
 
-@keyframes float {
-  from { transform: translateY(0); }
-  to { transform: translateY(-20px); }
+form::before{
+  content:"💐";
+  position:absolute;
+  top:-35px;
+  right:25px;
+  font-size:3rem;
 }
 
-/* 🌸 Form container (glassmorphism) */
-form {
-  height: 44rem;
-  width: 35rem;
-  display: flex;
-  flex-direction: column;
-  background: rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
-  border-radius: 30px;
-  border-left: 1px solid rgba(255, 255, 255, 0.3);
-  border-top: 1px solid rgba(255, 255, 255, 0.3);
-  backdrop-filter: blur(10px);
-  padding: 20px 30px;
-  z-index: 2;
-  position: relative;
+/* Title */
+h1{
+  font-family:'Playfair Display', serif;
+  text-align:center;
+  font-size:38px;
+  color:white;
+  margin-bottom:25px;
 }
 
-/* Decorative flower icon */
-form::before {
-  content: "🌸";
-  position: absolute;
-  font-size: 3rem;
-  top: -25px;
-  right: 25px;
-  opacity: 0.6;
-  animation: spin 6s linear infinite;
+/* Labels */
+label{
+  color:white;
+  margin-left:10%;
+  font-size:14px;
 }
 
-@keyframes spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+/* Inputs */
+input{
+  width:80%;
+  margin:10px auto 18px;
+  display:block;
+  padding:10px;
+  background:transparent;
+  border:none;
+  border-bottom:2px solid rgba(255,255,255,0.6);
+  color:white;
 }
 
-/* 🌷 Heading */
-h1 {
-  font-size: 45px;
-  text-align: center;
-  color: white;
-  text-shadow: 2px 2px 6px rgba(0, 0, 0, 0.2);
-  margin-bottom: 20px;
-  letter-spacing: 3px;
-  opacity: 0.9;
+input:focus{
+  outline:none;
+  border-bottom-color:#fff;
+  transform:scale(1.03);
 }
 
-/* 🌼 Labels */
-label {
-  font-size: 18px;
-  color: white;
-  margin-left: 10%;
-  opacity: 0.9;
-  margin-top: 5px;
+/* Button */
+button{
+  width:65%;
+  margin:25px auto;
+  display:block;
+  padding:12px;
+  border:none;
+  border-radius:30px;
+  background: linear-gradient(135deg,#a18cd1,#fbc2eb);
+  color:white;
+  font-size:16px;
+  cursor:pointer;
+  transition:0.4s;
 }
 
-/* Input fields */
-input, select {
-  width: 80%;
-  margin: 5% auto;
-  border: none;
-  outline: none;
-  background: transparent;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.6);
-  opacity: 0.9;
-  font-size: 1rem;
-  color: white;
-  transition: all 0.3s ease;
+button:hover{
+  transform:scale(1.1);
+  box-shadow:0 0 20px rgba(161,140,209,0.7);
 }
 
-input:focus, select:focus {
-  border-bottom: 1px solid #fff;
-  box-shadow: 0 4px 10px rgba(255, 255, 255, 0.2);
-  transform: scale(1.02);
+/* Links */
+a{
+  display:block;
+  text-align:center;
+  margin-top:10px;
+  font-size:13px;
+  color:white;
+  text-decoration:none;
 }
 
-/* 🌸 Button */
-button {
-  width: 50%;
-  margin: 5% auto;
-  color: white;
-  background: rgba(255, 255, 255, 0.15);
-  padding: 12px 30px;
-  border-radius: 25px;
-  border: none;
-  outline: none;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: all 0.4s ease;
+a:hover{
+  text-decoration:underline;
 }
 
-button:hover {
-  background-color: #ff69b4;
-  transform: scale(1.08);
-  box-shadow: 0 0 20px rgba(255, 105, 180, 0.5);
-}
-
-/* 🌺 Links */
-a {
-  font-size: 13px;
-  text-align: center;
-  color: white;
-  opacity: 0.8;
-  margin-top: 10px;
-  text-decoration: none;
-  transition: 0.3s;
-}
-
-a:hover {
-  text-decoration: underline;
-  color: #ffe6f7;
-}
-
-/* Responsive tweaks */
-@media (max-width: 768px) {
-  form {
-    width: 85%;
-    height: auto;
-    padding: 20px;
-  }
-  h1 {
-    font-size: 36px;
-  }
+/* Animation */
+@keyframes fadeIn{
+  from{opacity:0; transform:translateY(40px);}
+  to{opacity:1; transform:translateY(0);}
 }
