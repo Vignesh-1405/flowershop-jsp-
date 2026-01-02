@@ -4,7 +4,8 @@
 <%
 String admin = (String)session.getAttribute("admin");
 if(admin == null){
-    response.sendRedirect("adminlogin.jsp");
+    response.sendRedirect("login.jsp");
+
     return;
 }
 
@@ -168,6 +169,33 @@ body{
     color:#6f42c1;
     font-size:15px;
 }
+/* MARK DELIVERED BUTTON */
+.deliver-btn{
+    display:inline-block;
+    margin-top:15px;
+    padding:10px 18px;
+    background:#6f42c1;
+    color:#fff;
+    font-size:13px;
+    font-weight:600;
+    border-radius:20px;
+    text-decoration:none;
+    transition:0.3s;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
+}
+
+.deliver-btn:hover{
+    background:#5a33a2;
+    transform:translateY(-2px);
+}
+
+/* OPTIONAL: disable look */
+.deliver-btn.disabled{
+    background:#ccc;
+    cursor:not-allowed;
+    box-shadow:none;
+}
+
 </style>
 </head>
 
@@ -248,6 +276,25 @@ while(rsOrders.next()){
             <div class="total">
                 Grand Total: ₹<%=rsOrders.getInt("total_amount")%>
             </div>
+            
+              <%
+String status = rsOrders.getString("status");
+if(!"delivered".equals(status)){
+%>
+    <a class="deliver-btn"
+       href="markdelivered.jsp?oid=<%=rsOrders.getInt("order_id")%>"
+       onclick="return confirm('Mark as Delivered?');">
+       Mark Delivered
+    </a>
+<%
+} else {
+%>
+    <span class="deliver-btn disabled">Delivered</span>
+<%
+}
+%>
+
+
 
         </div>
 

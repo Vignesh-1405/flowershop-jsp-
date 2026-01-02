@@ -4,7 +4,7 @@
 <%
 String admin = (String)session.getAttribute("admin");
 if(admin == null){
-    response.sendRedirect("adminlogin.jsp");
+    response.sendRedirect("login.jsp");
     return;
 }
 %>

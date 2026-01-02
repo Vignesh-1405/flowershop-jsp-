@@ -35,14 +35,18 @@ if(totalRs.next()){
 
 // 2️⃣ Insert order (GET GENERATED ORDER ID)
 PreparedStatement orderPs = conn.prepareStatement(
- "INSERT INTO orders(user_email,total_amount,address,payment) VALUES(?,?,?,?)",
+ "INSERT INTO orders(user_email,total_amount,address,payment,status) VALUES (?,?,?,?,?)",
  Statement.RETURN_GENERATED_KEYS
 );
+
 orderPs.setString(1, email);
 orderPs.setInt(2, total);
 orderPs.setString(3, address);
 orderPs.setString(4, payment);
+orderPs.setString(5, "placed");   // ⭐ NEW LINE
+
 orderPs.executeUpdate();
+
 
 ResultSet orderKeys = orderPs.getGeneratedKeys();
 int orderId = 0;
