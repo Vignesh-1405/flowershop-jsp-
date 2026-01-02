@@ -12,30 +12,61 @@ if(session.getAttribute("admin")==null){
 <html>
 <head>
 <meta charset="UTF-8">
-<title>View Products</title>
+<title>Admin | Products</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<link rel="stylesheet"
+ href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
 
 <style>
-/* 🌸 PAGE BACKGROUND */
+*{margin:0;padding:0;box-sizing:border-box;}
+
 body{
-    margin:0;
-    min-height:100vh;
-    font-family:'Segoe UI',sans-serif;
-    background:
-        linear-gradient(rgba(0,0,0,0.45), rgba(0,0,0,0.45)),
-        url("images/flower-bg.jpg") center/cover no-repeat;
-    padding:60px 0;
+    font-family:'Poppins','Segoe UI',sans-serif;
+    background:#fdfdfd;
 }
 
-/* 🌸 MAIN CARD */
+/* LAYOUT */
 .container{
-    width:90%;
-    max-width:1100px;
-    margin:auto;
-    background:rgba(255,255,255,0.92);
-    backdrop-filter: blur(8px);
-    border-radius:14px;
-    padding:25px;
-    box-shadow:0 10px 30px rgba(0,0,0,0.25);
+    display:flex;
+    min-height:100vh;
+}
+
+/* SIDEBAR */
+.sidebar{
+    width:250px;
+    background:linear-gradient(180deg,#e84393,#fd79a8);
+    color:#fff;
+    padding:25px 20px;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+    margin-bottom:35px;
+}
+
+.menu a{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:14px 15px;
+    margin-bottom:10px;
+    text-decoration:none;
+    color:#fff;
+    border-radius:12px;
+    transition:0.3s;
+}
+
+.menu a:hover,
+.menu a.active{
+    background:rgba(255,255,255,0.25);
+}
+
+/* MAIN */
+.main{
+    flex:1;
+    padding:30px;
 }
 
 /* HEADER */
@@ -43,47 +74,39 @@ body{
     display:flex;
     justify-content:space-between;
     align-items:center;
-    margin-bottom:20px;
+    margin-bottom:25px;
 }
 
 .header h2{
-    margin:0;
-    color:#333;
+    color:#e84393;
 }
 
-/* BACK BUTTON */
-.back-btn{
-    padding:10px 16px;
-    background:#28a745;
-    color:white;
-    border:none;
-    border-radius:8px;
-    cursor:pointer;
-    font-size:14px;
-}
-.back-btn:hover{
-    background:#218838;
+/* TABLE CARD */
+.table-card{
+    background:#ffffff;
+    padding:25px;
+    border-radius:20px;
+    box-shadow:0 12px 30px rgba(0,0,0,0.08);
 }
 
-/* 🌸 TABLE */
+/* TABLE */
 table{
     width:100%;
     border-collapse:collapse;
-    margin-top:10px;
 }
 
 th{
-    background:#e84393;
-    color:white;
-    padding:12px;
+    background:#fde2ea;
+    color:#e84393;
+    padding:14px;
     text-align:center;
-    font-size:14px;
+    font-weight:600;
 }
 
 td{
-    padding:12px;
+    padding:14px;
     text-align:center;
-    border-bottom:1px solid #ddd;
+    border-bottom:1px solid #eee;
     font-size:14px;
 }
 
@@ -93,37 +116,33 @@ tr:hover{
 
 /* IMAGE */
 .product-img{
-    width:80px;
-    height:80px;
+    width:70px;
+    height:70px;
     object-fit:cover;
-    border-radius:8px;
-    box-shadow:0 2px 6px rgba(0,0,0,0.15);
+    border-radius:10px;
+    box-shadow:0 4px 12px rgba(0,0,0,0.15);
 }
 
 /* ACTION BUTTONS */
 .action a{
     text-decoration:none;
-    margin:0 5px;
+    padding:6px 10px;
+    border-radius:6px;
+    font-size:13px;
     font-weight:600;
 }
 
 .edit{
-    color:#007bff;
+    color:#0984e3;
 }
+
 .delete{
-    color:#dc3545;
+    color:#e74c3c;
 }
 
 /* OLD PRICE */
 .old-price{
-    color:#888;
-}
-
-/* RESPONSIVE */
-@media(max-width:768px){
-    table, thead, tbody, th, td, tr{
-        font-size:12px;
-    }
+    color:#999;
 }
 </style>
 </head>
@@ -132,23 +151,42 @@ tr:hover{
 
 <div class="container">
 
-    <div class="header">
-        <h2>🌸 All Products</h2>
-        <a href="admindashboard.jsp">
-            <button class="back-btn">⬅ Dashboard</button>
-        </a>
+    <!-- SIDEBAR -->
+    <div class="sidebar">
+        <div class="logo">🌸 Flower Admin</div>
+
+        <div class="menu">
+            <a href="admindashboard.jsp"><i class="fas fa-home"></i> Dashboard</a>
+            <a href="admin_users.jsp"><i class="fas fa-users"></i> Users</a>
+            <a href="addproduct.jsp"><i class="fas fa-plus-circle"></i> Add Product</a>
+            <a href="#" class="active"><i class="fas fa-list"></i> Products</a>
+            <a href="adminorders.jsp"><i class="fas fa-box"></i> Orders</a>
+            <a href="adminreviews.jsp"><i class="fas fa-star"></i> Reviews</a>
+            <a href="adminContact.jsp"><i class="fas fa-envelope"></i> Messages</a>
+            <a href="logout.jsp"><i class="fas fa-sign-out-alt"></i> Logout</a>
+        </div>
     </div>
 
-    <table>
-        <tr>
-            <th>Image</th>
-            <th>Name</th>
-            <th>Price</th>
-            <th>Old Price</th>
-            <th>Category</th>
-            <th>Stock</th>
-            <th>Action</th>
-        </tr>
+    <!-- MAIN -->
+    <div class="main">
+
+        <div class="header">
+            <h2>🌸 All Products</h2>
+            <div><i class="fas fa-user-shield"></i> Admin</div>
+        </div>
+
+        <div class="table-card">
+
+            <table>
+                <tr>
+                    <th>Image</th>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Old Price</th>
+                    <th>Category</th>
+                    <th>Stock</th>
+                    <th>Action</th>
+                </tr>
 
 <%
 Class.forName("com.mysql.cj.jdbc.Driver");
@@ -160,41 +198,41 @@ ResultSet rs = st.executeQuery("SELECT * FROM productlist");
 
 while(rs.next()){
 %>
-        <tr>
-            <td>
-                <img src="<%=request.getContextPath()%>/images/<%=rs.getString("image")%>"
-                     class="product-img">
-            </td>
-
-            <td><%=rs.getString("name")%></td>
-            <td>₹ <%=rs.getInt("price")%></td>
-            <td class="old-price">
-                <del>₹ <%=rs.getInt("old_price")%></del>
-            </td>
-            <td><%=rs.getString("category")%></td>
-            <td><%=rs.getInt("stock")%></td>
-
-            <td class="action">
-                <a class="edit"
-                   href="editproduct.jsp?pid=<%=rs.getInt("product_id")%>">
-                   ✏️ Edit
-                </a>
-                |
-                <a class="delete"
-                href="deleteproduct.jsp?pid=<%=rs.getInt("product_id")%>"
-                onclick="return confirm('Delete this product?')">
-                ❌ Delete
-                </a>
-
-            </td>
-        </tr>
+                <tr>
+                    <td>
+                        <img src="<%=request.getContextPath()%>/images/<%=rs.getString("image")%>"
+                             class="product-img">
+                    </td>
+                    <td><%=rs.getString("name")%></td>
+                    <td>₹ <%=rs.getInt("price")%></td>
+                    <td class="old-price">
+                        <del>₹ <%=rs.getInt("old_price")%></del>
+                    </td>
+                    <td><%=rs.getString("category")%></td>
+                    <td><%=rs.getInt("stock")%></td>
+                    <td class="action">
+                        <a class="edit"
+                           href="editproduct.jsp?pid=<%=rs.getInt("product_id")%>">
+                           ✏️ Edit
+                        </a>
+                        |
+                        <a class="delete"
+                           href="deleteproduct.jsp?pid=<%=rs.getInt("product_id")%>"
+                           onclick="return confirm('Delete this product?')">
+                           ❌ Delete
+                        </a>
+                    </td>
+                </tr>
 <%
 }
 conn.close();
 %>
 
-    </table>
+            </table>
 
+        </div>
+
+    </div>
 </div>
 
 </body>

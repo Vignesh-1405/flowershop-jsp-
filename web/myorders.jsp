@@ -77,7 +77,8 @@ while(rs.next()){
 %>
 
     <div class="order-card">
-        <h3>Order #<%=rs.getInt("order_id")%></h3>
+        <h3>Order ID: FLW-<%=rs.getInt("order_id")%></h3>
+
 
         <p><b>Total Amount:</b> ₹<%=rs.getInt("total_amount")%></p>
         <p><b>Payment:</b> <%=rs.getString("payment")%></p>
