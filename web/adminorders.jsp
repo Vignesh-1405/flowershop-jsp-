@@ -10,9 +10,7 @@ if(admin == null){
 }
 
 Class.forName("com.mysql.cj.jdbc.Driver");
-Connection conn = DriverManager.getConnection(
- "jdbc:mysql://localhost:3306/flowerproducts","root","Vicky345@"
-);
+Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/flowerproducts","root","Vicky345@");
 
 PreparedStatement psOrders = conn.prepareStatement(
  "SELECT * FROM orders ORDER BY order_date DESC");
